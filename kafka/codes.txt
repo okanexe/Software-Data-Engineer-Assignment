@@ -1,0 +1,6 @@
+"""INSERT INTO productViews(event, messageid, userid, properties, context) VALUES \
+            (%s, %s, %s, '{"productid":"%s"}', '{"source":"%s"}');""" %
+
+
+        """INSERT INTO productViews(context) VALUES('{"source":"%s"}')""" % (js["context"]["source"])
+        ,
