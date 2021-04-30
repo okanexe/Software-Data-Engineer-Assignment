@@ -6,12 +6,13 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import java.util.Date;
 
 @Entity
 @Getter
 @Setter
 @Table(name = "productviews")
-public class ProductView {
+public class ProductView implements Comparable<ProductView>{
 
     @Column(name = "event")
     private String event;
@@ -32,15 +33,23 @@ public class ProductView {
     private List<Source> context;
 */
 
-    @Column(name = "properties")
-    private String properties;
+    @Column(name = "productid")
+    private String productid;
 
-    @Column(name = "context")
-    private String context;
+    @Column(name = "source")
+    private String source;
 
 
     @Column(name = "timestamp")
-    private String timestamp;
+    private Date timestamp;
+
+    @Override
+    public int compareTo(ProductView view) {
+    if (getTimestamp() == null || view.getTimestamp() == null) {
+        return 0;
+    }
+    return getTimestamp().compareTo(view.getTimestamp());
+    }
 
 }
 /*

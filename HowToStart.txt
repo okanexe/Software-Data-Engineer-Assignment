@@ -1,0 +1,12 @@
+kafka:
+Run with "python kafkaProducer.py" kafka Producer to fetch data from product-views.json to kafkaProducer
+then run with "python fromConsumerToDb.py" kafka consumer to send data to postgresql database
+other files is preparing codes to run services
+jsonReader.py --> read json line by line
+kafkaConsumer.py --> basic kafkaConsumer connector to python. I used it to see that how kafka consumer working on python.
+postgresql_connector.py --> connect postgresql database on python with given arguments.
+postgresql_timestamp.py --> I had to add timestamp for product views to api by date time views.
+prepareToJson.py --> I worked in that how to fetch data correctly from json file to database as correct format.
+
+restapi:
+Run above code and then run java server with restapi app.

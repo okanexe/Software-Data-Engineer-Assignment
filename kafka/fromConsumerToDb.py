@@ -27,9 +27,9 @@ commands = (
             event VARCHAR(255),
             messageid VARCHAR(255),
             userid VARCHAR(255),
-            properties json,
-            context json,
-            timestamp VARCHAR(255)
+            productid VARCHAR(255),
+            source VARCHAR(255),
+            timestamp TIMESTAMP
         );
         """
 )
@@ -53,10 +53,10 @@ try:
         js = json.loads(msg.value.decode('UTF-8'))
         cur = conn.cursor()
 
-        cur.execute("""INSERT INTO productViews(event, messageid, userid, properties, context, timestamp) VALUES \
-                                    ('%s', '%s', '%s', '{"productid":"%s"}', '{"source":"%s"}', '%s');""" % (
+        cur.execute("""INSERT INTO productViews(event, messageid, userid, productid, source, timestamp) VALUES \
+                                    ('%s', '%s', '%s', '%s', '%s',TIMESTAMP '%s');""" % (
             js["event"], js["messageid"],
-            js["userid"], js["properties"]["productid"], js["context"]["source"], datetime.datetime.now().strftime("%H:%M:%S.%f - %b %d %Y")))
+            js["userid"], js["properties"]["productid"], js["context"]["source"], datetime.datetime.now()))
         cur.close()
         conn.commit()
 

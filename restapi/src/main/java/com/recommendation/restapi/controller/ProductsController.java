@@ -4,15 +4,10 @@ import com.recommendation.restapi.model.Order;
 import com.recommendation.restapi.model.OrderItem;
 import com.recommendation.restapi.model.Product;
 import com.recommendation.restapi.model.ProductView;
-import com.recommendation.restapi.service.OrderItemService;
-import com.recommendation.restapi.service.OrderService;
-import com.recommendation.restapi.service.ProductService;
-import com.recommendation.restapi.service.ProductViewService;
+import com.recommendation.restapi.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import javax.websocket.server.PathParam;
-import java.util.ArrayList;
 import java.util.List;
 
 @RequestMapping("/products")
@@ -31,20 +26,8 @@ public class ProductsController {
     @Autowired
     private ProductViewService productViewService;
 
-    @GetMapping
-    public String get(){
-        return "hello-world";
-    }
-
-    @GetMapping("/okan")
-    public String getOkan(){
-        return "okan";
-    }
-
-    @GetMapping("/get")
-    public String setOkan(@RequestParam(defaultValue = "bosluk") String p){
-        return p;
-    }
+    @Autowired
+    private BestSellerProductService bestSellerProductService;
 
     @GetMapping("/order")
     public List<Order> getOrder(){
@@ -66,6 +49,7 @@ public class ProductsController {
         return orderItemService.getAll();
     }
 
+    /* browsing history with given user id by date time*/
     @GetMapping("/user")
     public List<Order> getUsersOrder(String userId){
         return orderService.givenUser(userId);
@@ -74,6 +58,16 @@ public class ProductsController {
     @GetMapping("/views")
     public List<ProductView> getProductViews(){
         return productViewService.getAll();
+    }
+
+    @GetMapping("/userProducts")
+    public List<ProductView> getUsersProductViews(String userId){
+        return productViewService.getProductViewByGivenUser(userId);
+    }
+
+    @GetMapping("/bestSeller")
+    public List getBestSeller(){
+        return bestSellerProductService.bestSeller();
     }
 }
 
