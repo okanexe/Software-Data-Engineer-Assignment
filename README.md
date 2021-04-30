@@ -69,13 +69,13 @@ docker-compose -f ./docker-compose.yml up -d
 To tear down, you should run following command:
 docker-compose -f ./docker-compose.yml down
 
-Important Note: If you tear down docker containers after ingesting data, you will lose the data you ingested and you have to ingest data again.
+Important Note: If you tear down docker containers after ingesting data, you will lose the data you ingested and you have to ingest data again.<br>
 
-After setup is completed;
-You can access Kafka from port 9092 on your localhost
-You can access PostgreSQL from port 5432 on your localhost. Credentials are:
-Username: postgres
-Password: 123456
+After setup is completed;<br>
+You can access Kafka from port 9092 on your localhost<br>
+You can access PostgreSQL from port 5432 on your localhost. Credentials are:<br>
+Username: postgres<br>
+Password: 123456<br>
 
 <h2>Data</h2>
 There are two data sources:
@@ -85,25 +85,25 @@ The PostgreSQL we provided to you, which contains data-db database with followin
 
 The product-views.json we provided to you. The View Producer App will read this file and publish one event in a second to Kafka. The current timestamp should be added to product view event data. An example of a product view event is given below. See the file for details.
 
-{
-  "event": "ProductView",
-  "messageid": "c002a71a-9750-4604-8d70-d5ff3f1c4495",
-  "userid": "user-120",
-  "properties": {
-    "productid": "product-393"
-  },
-  "context": {
-    "source": "mobile-app"
-  }
-}
+{<br>
+  "event": "ProductView",<br>
+  "messageid": "c002a71a-9750-4604-8d70-d5ff3f1c4495",<br>
+  "userid": "user-120",<br>
+  "properties": {<br>
+    "productid": "product-393"<br>
+  },<br>
+  "context": {<br>
+    "source": "mobile-app"<br>
+  }<br>
+}<br>
 
 
 <b>Fields descriptions:</b>
-event is the name of the event
-messageid is a unique guid id for the event
-userid is the member who viewed product
-properties.productid is the viewed product
-context.source is the platform of the event source
+event is the name of the event<br>
+messageid is a unique guid id for the event<br>
+userid is the member who viewed product<br>
+properties.productid is the viewed product<br>
+context.source is the platform of the event source<br>
 
 <h2>Expected Outcomes</h2>
 Documentation of your solution which contains the schema/block diagram of your solution and any other details.
@@ -111,14 +111,14 @@ Codes of any application (scripts, ETLs, streaming app, rest API, tests) develop
 Especially for API application, unit testing must be satisfied
 
 <h2>Notes</h2>
-You are free to choose any programming/scripting languages.
-You are free to choose and install any other tools/DBS into your environment. Please give details if used.
-Following criteria will be considered during the evaluation of the assignment:
-Satisfaction of requirements
-Architectural Decisions & Tool Choices
-Code Quality & Readability
-Testing, packaging and deployment. (Containerization)
-Package your codes and documents and send them to us.
+You are free to choose any programming/scripting languages.<br>
+You are free to choose and install any other tools/DBS into your environment. Please give details if used.<br>
+Following criteria will be considered during the evaluation of the assignment:<br>
+Satisfaction of requirements<br>
+Architectural Decisions & Tool Choices<br>
+Code Quality & Readability<br>
+Testing, packaging and deployment. (Containerization)<br>
+Package your codes and documents and send them to us.<br>
 
 You have 7 days to fulfill the assignment. Please, do not hesitate to contact us in case of any questions or suggestions.
 Good luck :)
